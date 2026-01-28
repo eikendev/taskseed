@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+version: 2
+
+builds:
+  - id: taskseed
+    main: ./cmd/taskseed
+    goos:
+      - linux
+    goarch:
+      - amd64
+
+checksum:
+  algorithm: sha256
+
+archives:
+  - id: taskseed
+    ids:
+      - taskseed
+    formats:
+      - tar.gz
