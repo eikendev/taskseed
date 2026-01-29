@@ -2,6 +2,8 @@
 .env
 config.yaml
 internal/config/schedulekind_enumer.go
+
+dist/
 out/
 
 # Configuration files for coding agents
