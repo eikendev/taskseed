@@ -13,6 +13,7 @@ import (
 	"github.com/emersion/go-ical"
 	"github.com/emersion/go-webdav"
 	"github.com/emersion/go-webdav/caldav"
+	"github.com/justinrixx/retryhttp"
 )
 
 // Client handles CalDAV operations.
@@ -52,7 +53,10 @@ const (
 
 // NewClient creates an authenticated CalDAV client.
 func NewClient(endpoint, calendarURL, username, password string) (*Client, error) {
-	httpClient := webdav.HTTPClientWithBasicAuth(http.DefaultClient, username, password)
+	baseClient := &http.Client{
+		Transport: retryhttp.New(),
+	}
+	httpClient := webdav.HTTPClientWithBasicAuth(baseClient, username, password)
 	calClient, err := caldav.NewClient(httpClient, endpoint)
 	if err != nil {
 		slog.Error("failed to create caldav client", "error", err)
