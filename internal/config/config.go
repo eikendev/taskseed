@@ -148,7 +148,7 @@ func finalizeConfig(cfg *Config) error {
 	for i := range cfg.Rules {
 		rule := &cfg.Rules[i]
 		if _, exists := seen[rule.ID]; exists {
-			slog.Error("duplicate rule id", "index", i, "id", rule.ID)
+			slog.Error("detected duplicate rule id", "index", i, "id", rule.ID)
 			return fmt.Errorf("rules[%d].id must be unique", i)
 		}
 		seen[rule.ID] = struct{}{}

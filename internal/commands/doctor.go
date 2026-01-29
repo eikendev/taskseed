@@ -33,7 +33,7 @@ func (cmd *DoctorCommand) Run() error {
 	defer cancel()
 	_, err = client.QueryTasks(ctx, time.Now().Add(-24*time.Hour), time.Now().Add(24*time.Hour))
 	if err != nil {
-		slog.Error("connectivity check failed", "error", err)
+		slog.Error("failed to check connectivity", "error", err)
 		return fmt.Errorf("caldav doctor failed: %w", err)
 	}
 

@@ -18,6 +18,6 @@ func Setup(verbose bool) {
 	slog.SetDefault(slog.New(handler))
 
 	if verbose {
-		slog.Info("verbose logging enabled", "level", level)
+		slog.Info("enabled verbose logging", "level", level)
 	}
 }

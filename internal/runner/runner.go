@@ -33,13 +33,18 @@ func Run(ctx context.Context, cfg config.Config, opts Options) error {
 		return fmt.Errorf("create caldav client: %w", err)
 	}
 
+	slog.Debug("querying existing tasks", "calendar", cfg.Target.URL.String(), "window_start", windowStart.Format(timeutil.DateLayout), "window_end", windowEnd.Format(timeutil.DateLayout))
 	existing, err := client.QueryTasks(ctx, windowStart, windowEnd)
 	if err != nil {
 		slog.Error("failed to query existing tasks", "error", err)
 		return fmt.Errorf("query existing tasks: %w", err)
 	}
 
+	slog.Info("fetched existing tasks", "count", len(existing))
+
 	existingIDs, openByRule, lastOccByRule := summarize(existing, cfg.Defaults.Timezone)
+
+	slog.Info("summarized existing tasks", "instances", len(existingIDs), "rules_with_open", len(openByRule), "rules_with_occurrence", len(lastOccByRule))
 
 	processor := ruleProcessor{
 		calendarURL:   cfg.Target.URL.String(),
@@ -70,13 +75,13 @@ func summarize(tasks []caldav.Task, timezone *time.Location) (map[string]struct{
 
 	for _, t := range tasks {
 		if t.InstanceID == "" || t.RuleID == "" || t.Occurrence == "" {
-			slog.Warn("task missing required fields", "instance_id", t.InstanceID, "rule_id", t.RuleID, "occurrence", t.Occurrence)
+			slog.Warn("missing required fields on task", "instance_id", t.InstanceID, "rule_id", t.RuleID, "occurrence", t.Occurrence)
 			continue
 		}
 
-		parsed, err := time.ParseInLocation("2006-01-02", t.Occurrence, timezone)
+		parsed, err := time.ParseInLocation(timeutil.DateLayout, t.Occurrence, timezone)
 		if err != nil {
-			slog.Warn("invalid occurrence date on task", "rule", t.RuleID, "occurrence", t.Occurrence, "error", err)
+			slog.Warn("found invalid occurrence date on task", "rule", t.RuleID, "occurrence", t.Occurrence, "error", err)
 			continue
 		}
 
@@ -100,7 +105,7 @@ func summarize(tasks []caldav.Task, timezone *time.Location) (map[string]struct{
 // Inputs: rule, occurrence date, calendar URL, due preferences, and timezone.
 // Output: a populated caldav.NewTask ready to create.
 func buildTask(rule config.Rule, occ time.Time, calendarURL string, due config.DuePreference, timezone *time.Location) caldav.NewTask {
-	id := identity.InstanceID(calendarURL, rule.ID, occ.Format("2006-01-02"))
+	id := identity.InstanceID(calendarURL, rule.ID, occ.Format(timeutil.DateLayout))
 	dueTime := computeDue(occ, due, timezone)
 
 	return caldav.NewTask{
@@ -111,7 +116,7 @@ func buildTask(rule config.Rule, occ time.Time, calendarURL string, due config.D
 		DateOnly:   due.DateOnly,
 		InstanceID: id,
 		RuleID:     rule.ID,
-		Occurrence: occ.Format("2006-01-02"),
+		Occurrence: occ.Format(timeutil.DateLayout),
 		Timezone:   timezone.String(),
 	}
 }
