@@ -48,4 +48,5 @@ setup:
 
 .PHONY: fmt
 fmt:
+	goimports -w -local $(GO_MODULE) $(GO_FILES)
 	gofumpt -l -w .
