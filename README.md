@@ -1,8 +1,32 @@
-# taskseed
+<div align="center">
+	<h1>taskseed</h1>
+	<h4 align="center">
+		Recurring CalDAV tasks that actually work.
+	</h4>
+	<p>
+		<strong>taskseed</strong> injects recurring tasks into your CalDAV task list, so every client sees upcoming tasks (VTODOs).
+	</p>
+</div>
 
-taskseed materializes recurring tasks into a CalDAV task list. It expands declarative rules into concrete VTODO entries so clients that lack reliable recurrence support still receive upcoming tasks.
+<p align="center">
+	<a href="https://github.com/eikendev/taskseed/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/eikendev/taskseed/main.yml?branch=main"/></a>&nbsp;
+	<a href="https://github.com/eikendev/taskseed/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/eikendev/taskseed"/></a>&nbsp;
+</p>
 
-## Usage
+## ✨&nbsp;Why taskseed?
+
+Recurring `VTODO` tasks are handled inconsistently across CalDAV clients. Some ignore recurrence rules entirely.
+
+**taskseed** avoids this by expanding recurring tasks on the server side. Instead of relying on clients to interpret recurrence metadata, it materializes upcoming tasks as concrete `VTODO` entries.
+
+## 🧠&nbsp;How it works
+
+- You declare your recurring tasks once in a simple configuration file
+- taskseed runs on the server and regularly generates upcoming task instances (`VTODO` items)
+- Each occurrence is written as a normal, single task into your CalDAV task list
+- Your apps simply show upcoming tasks; no special support or setup for recurrence required
+
+## 📄&nbsp;Usage
 
 ```
 taskseed sync --config config.yaml
@@ -10,7 +34,7 @@ taskseed sync --config config.yaml
 
 Use `--dry-run` to see planned creations without writing. `taskseed doctor` validates credentials and calendar reachability.
 
-## Configuration
+## ⚙&nbsp;Configuration
 
 Find below an example YAML file. By default, we read `config.yaml` from the current working directory; override with `--config` or `TASKSEED_CONFIG`.
 
@@ -35,3 +59,5 @@ rules:
       kind: weekly
       weekdays: [monday, thursday]
 ```
+
+[^reminders-rrule]: iOS Reminders supports recurring tasks created in its own UI but does not reliably consume externally provided `VTODO` items with `RRULE`, based on observed behavior and community reports.
