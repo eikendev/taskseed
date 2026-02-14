@@ -35,14 +35,14 @@ func Run(ctx context.Context, cfg config.Config, opts Options) error {
 	windowStart := today.AddDate(0, 0, -cfg.Sync.LookbackDays)
 	windowEnd := processor.WindowEnd()
 
-	slog.Debug("querying existing tasks", "calendar", cfg.Target.URL.String(), "window_start", windowStart.Format(timeutil.DateLayout), "window_end", windowEnd.Format(timeutil.DateLayout))
+	slog.Debug("querying existing tasks")
 	existing, err := client.QueryTasks(ctx, windowStart, windowEnd)
 	if err != nil {
 		slog.Error("failed to query existing tasks", "error", err)
 		return fmt.Errorf("query existing tasks: %w", err)
 	}
 
-	slog.Info("fetched existing tasks", "count", len(existing))
+	slog.Info("fetched existing tasks")
 
 	processor.LoadExisting(existing)
 

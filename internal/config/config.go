@@ -33,7 +33,7 @@ type Config struct {
 type ServerConfig struct {
 	URL      *url.URL `yaml:"url" validate:"required"`
 	Username string   `yaml:"username"`
-	Password string   `yaml:"password"`
+	Password string   `yaml:"password"` // #nosec G117 -- configuration field, not a hardcoded secret
 }
 
 // TargetConfig identifies the calendar to operate on.
