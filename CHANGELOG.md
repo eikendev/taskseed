@@ -6,7 +6,3 @@
 ### Documentation
 
 * initialize changelog ([dea1035](https://github.com/eikendev/taskseed/commit/dea1035af25016e2016aa3758667b61f7e70ff21))
-
-## Changelog
-
-All notable changes to this project are documented below.
