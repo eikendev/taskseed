@@ -9,7 +9,7 @@
 </div>
 
 <p align="center">
-	<a href="https://github.com/eikendev/taskseed/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/eikendev/taskseed/main.yml?branch=main"/></a>&nbsp;
+	<a href="https://github.com/eikendev/taskseed/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/eikendev/taskseed/pr.yaml?branch=main"/></a>&nbsp;
 	<a href="https://github.com/eikendev/taskseed/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/eikendev/taskseed"/></a>&nbsp;
 </p>
 
