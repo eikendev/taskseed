@@ -21,3 +21,11 @@ archives:
       - taskseed
     formats:
       - tar.gz
+    files:
+      - CHANGELOG.md
+      - LICENSE
+      - README.md
+
+before:
+  hooks:
+  - make generate
