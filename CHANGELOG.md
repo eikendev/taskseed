@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/eikendev/taskseed/compare/v0.2.2...v0.2.3) (2026-02-17)
+
+
+### Bug Fixes
+
+* call go generate before building ([fe291e7](https://github.com/eikendev/taskseed/commit/fe291e739ed1a2b28bec3a733f4df6f564339eab))
+
 ## [0.2.2](https://github.com/eikendev/taskseed/compare/v0.2.1...v0.2.2) (2026-02-16)
 
 
