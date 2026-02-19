@@ -77,17 +77,18 @@ func parseWeekday(name string) (*time.Weekday, error) {
 	if !ok {
 		return pointerTo(time.Weekday(0)), fmt.Errorf("invalid weekday %q", name)
 	}
-	return pointerTo(weekday), nil
+	return new(weekday), nil
 }
 
 func parseScheduleKind(name string) (*ScheduleKind, error) {
 	kind, err := ScheduleKindString(name)
 	if err != nil {
-		return pointerTo(ScheduleKindWeekly), fmt.Errorf("invalid schedule kind %q", name)
+		return new(ScheduleKindWeekly), fmt.Errorf("invalid schedule kind %q", name)
 	}
-	return pointerTo(kind), nil
+	return new(kind), nil
 }
 
+//go:fix inline
 func pointerTo[T any](val T) *T {
-	return &val
+	return new(val)
 }
