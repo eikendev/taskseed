@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/eikendev/taskseed/compare/v0.2.3...v0.2.4) (2026-02-20)
+
+
+### Build
+
+* enforce go fix check in test ([8fcafd0](https://github.com/eikendev/taskseed/commit/8fcafd0e772f1e31ed74f8a0683bc433b78e023f))
+
 ## [0.2.3](https://github.com/eikendev/taskseed/compare/v0.2.2...v0.2.3) (2026-02-17)
 
 
