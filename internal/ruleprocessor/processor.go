@@ -73,20 +73,20 @@ func (p *Processor) ProcessRule(ctx context.Context, rule config.Rule) {
 	slog.Debug("processing rule", "rule", rule.ID, "schedule_kind", rule.Schedule.Kind, "last_occurrence", lastOcc, "has_open_task", p.openByRule[rule.ID])
 
 	if p.openByRule[rule.ID] {
-		slog.Info("skipping as rule is gated by open task", "rule", rule.ID)
+		slog.Info("skipping rule", "rule", rule.ID, "reason", "open_task")
 		return
 	}
 
 	candidate, ok := p.nextCandidate(rule, p.lastOccByRule[rule.ID])
 	if !ok {
-		slog.Info("found no occurrences to create", "rule", rule.ID, "last_occurrence", lastOcc, "window_end", p.windowEnd.Format(timeutil.DateLayout))
+		slog.Info("no occurrences to create", "rule", rule.ID, "last_occurrence", lastOcc, "window_end", p.windowEnd.Format(timeutil.DateLayout))
 		return
 	}
 
 	task := buildTask(rule, candidate, p.calendarURL, p.due, p.timezone)
 
 	if p.dryRun {
-		slog.Info("skipping task creation in dry run", "rule", rule.ID)
+		slog.Info("skipping task creation", "rule", rule.ID, "reason", "dry_run")
 		return
 	}
 
@@ -143,7 +143,7 @@ func summarize(tasks []caldav.Task, timezone *time.Location) (map[string]struct{
 
 		parsed, err := time.ParseInLocation(timeutil.DateLayout, t.Occurrence, timezone)
 		if err != nil {
-			slog.Warn("found invalid occurrence date on task", "rule", t.RuleID, "occurrence", t.Occurrence, "error", err)
+			slog.Warn("found invalid occurrence date", "rule", t.RuleID, "occurrence", t.Occurrence, "error", err)
 			continue
 		}
 

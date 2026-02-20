@@ -34,7 +34,7 @@ func (cmd *SyncCommand) Run() error {
 	if err := runner.Run(ctx, cfg, runner.Options{
 		DryRun: cmd.DryRun,
 	}); err != nil {
-		slog.Error("sync failed", "error", err)
+		slog.Error("failed to sync", "error", err)
 		return fmt.Errorf("sync failed: %w", err)
 	}
 

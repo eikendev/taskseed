@@ -67,7 +67,7 @@ func NewClient(endpoint, calendarURL, username, password string) (*Client, error
 	if u, err := url.Parse(calendarURL); err == nil && u.Path != "" {
 		path = u.Path
 	} else if err != nil {
-		slog.Error("failed to parse calendar URL", "error", err)
+		slog.Error("failed to parse calendar url", "error", err)
 		return nil, fmt.Errorf("parse calendar URL: %w", err)
 	}
 
