@@ -179,8 +179,7 @@ func (c *Client) CreateTask(ctx context.Context, task NewTask) error {
 	cal.Props.SetText(ical.PropProductID, "-//taskseed//EN")
 	cal.Children = append(cal.Children, todo)
 
-	resource := strings.TrimSuffix(task.InstanceID, ".ics")
-	resource += ".ics"
+	resource := task.InstanceID + ".ics"
 
 	_, err := c.client.PutCalendarObject(ctx, joinPath(c.calendarPath, resource), cal)
 	if err != nil {
