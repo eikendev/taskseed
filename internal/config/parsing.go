@@ -75,7 +75,7 @@ var weekdayValues = map[string]time.Weekday{
 func parseWeekday(name string) (*time.Weekday, error) {
 	weekday, ok := weekdayValues[strings.ToLower(name)]
 	if !ok {
-		return pointerTo(time.Weekday(0)), fmt.Errorf("invalid weekday %q", name)
+		return nil, fmt.Errorf("invalid weekday %q", name)
 	}
 	return new(weekday), nil
 }
@@ -83,12 +83,7 @@ func parseWeekday(name string) (*time.Weekday, error) {
 func parseScheduleKind(name string) (*ScheduleKind, error) {
 	kind, err := ScheduleKindString(name)
 	if err != nil {
-		return new(ScheduleKindWeekly), fmt.Errorf("invalid schedule kind %q", name)
+		return nil, fmt.Errorf("invalid schedule kind %q", name)
 	}
 	return new(kind), nil
-}
-
-//go:fix inline
-func pointerTo[T any](val T) *T {
-	return new(val)
 }
