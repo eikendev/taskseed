@@ -14,7 +14,7 @@ import (
 	"github.com/goccy/go-yaml"
 )
 
-//gosec:disable G101 -- These are environment variable names, not credentials
+// #nosec G101 -- These are environment variable names, not credentials
 const (
 	envUsernameVar = "TASKSEED_CALDAV_USERNAME"
 	envPasswordVar = "TASKSEED_CALDAV_PASSWORD"
