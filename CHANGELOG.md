@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.4](https://github.com/eikendev/taskseed/compare/v0.2.3...v0.2.4) (2026-03-21)
+
+
+### Bug Fixes
+
+* **caldav:** avoid trimming instance id suffix ([3564340](https://github.com/eikendev/taskseed/commit/3564340533f8f651ccd5f7bfb1b6317fb775d1fe))
+* **config:** return nil on invalid weekday ([9e7dccc](https://github.com/eikendev/taskseed/commit/9e7dccc9357830b09394bf6f244f9fd4c082db04))
+* **schedule:** default to utc when tz is nil ([a87a497](https://github.com/eikendev/taskseed/commit/a87a4973c9880f5fdfdac8d1302734ae715b5bea))
+
+
+### Build
+
+* enforce go fix check in test ([8fcafd0](https://github.com/eikendev/taskseed/commit/8fcafd0e772f1e31ed74f8a0683bc433b78e023f))
+
 ## [0.2.3](https://github.com/eikendev/taskseed/compare/v0.2.2...v0.2.3) (2026-02-17)
 
 
