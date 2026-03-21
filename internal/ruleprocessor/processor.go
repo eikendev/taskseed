@@ -105,15 +105,7 @@ func (p *Processor) nextCandidate(rule config.Rule, lastOccurrence *time.Time) (
 	occurrences := schedule.Occurrences(rule.Schedule, ruleToday, ruleEnd, p.timezone, lastOccurrence)
 	slog.Debug("computed occurrences", "rule", rule.ID, "count", len(occurrences))
 
-	slices.SortFunc(occurrences, func(a, b time.Time) int {
-		if a.Before(b) {
-			return -1
-		}
-		if a.After(b) {
-			return 1
-		}
-		return 0
-	})
+	slices.SortFunc(occurrences, time.Time.Compare)
 
 	for _, occ := range occurrences {
 		if occ.Before(ruleToday) {
