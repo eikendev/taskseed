@@ -4,17 +4,23 @@ import (
 	"fmt"
 	"net/url"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/goccy/go-yaml"
 )
 
-func init() {
-	yaml.RegisterCustomUnmarshaler(clockTimeUnmarshal)
-	yaml.RegisterCustomUnmarshaler(locationUnmarshal)
-	yaml.RegisterCustomUnmarshaler(urlUnmarshal)
-	yaml.RegisterCustomUnmarshaler(weekdayUnmarshal)
-	yaml.RegisterCustomUnmarshaler(scheduleKindUnmarshal)
+var registerParsersOnce sync.Once
+
+// RegisterParsers registers YAML custom unmarshaler hooks.
+func RegisterParsers() {
+	registerParsersOnce.Do(func() {
+		yaml.RegisterCustomUnmarshaler(clockTimeUnmarshal)
+		yaml.RegisterCustomUnmarshaler(locationUnmarshal)
+		yaml.RegisterCustomUnmarshaler(urlUnmarshal)
+		yaml.RegisterCustomUnmarshaler(weekdayUnmarshal)
+		yaml.RegisterCustomUnmarshaler(scheduleKindUnmarshal)
+	})
 }
 
 func unmarshalStringInto[T any](target *T, data []byte, parse func(string) (*T, error)) error {

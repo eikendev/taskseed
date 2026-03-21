@@ -159,6 +159,8 @@ func finalizeConfig(cfg *Config) error {
 
 // Load reads and validates configuration from disk.
 func Load(path string) (Config, error) {
+	RegisterParsers()
+
 	absPath, err := filepath.Abs(path)
 	if err != nil {
 		slog.Error("failed to resolve config path", "error", err)
