@@ -12,7 +12,7 @@ import (
 // Occurrences returns all occurrence dates for a rule between startDate and endDate.
 func Occurrences(def config.RuleSchedule, startDate, endDate time.Time, tz *time.Location, anchor *time.Time) []time.Time {
 	if tz == nil {
-		tz = time.Local
+		tz = time.UTC
 	}
 
 	start := timeutil.DateAt(startDate.In(tz))
