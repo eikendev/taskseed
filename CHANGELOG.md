@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/eikendev/taskseed/compare/v0.2.4...v0.2.5) (2026-06-06)
+
+
+### Build
+
+* exclude generated files from gofumpt ([3401d72](https://github.com/eikendev/taskseed/commit/3401d721c77336d555388b95baf88f9d7ca7df55))
+
 ## [0.2.4](https://github.com/eikendev/taskseed/compare/v0.2.3...v0.2.4) (2026-03-21)
 
 
