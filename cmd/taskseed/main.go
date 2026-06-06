@@ -17,7 +17,8 @@ type CLI struct {
 
 func main() {
 	var cli CLI
-	kctx := kong.Parse(&cli,
+	kctx := kong.Parse(
+		&cli,
 		kong.Description("taskseed materializes recurring tasks into CalDAV task lists."),
 		kong.UsageOnError(),
 	)

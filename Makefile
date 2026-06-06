@@ -1,5 +1,5 @@
 OUT_DIR := ./out
-GO_FILES := $(shell find . -type f \( -iname '*.go' \))
+GO_FILES := $(shell find . -type f \( -iname '*.go' \) -exec grep -L '^// Code generated .* DO NOT EDIT\.$$' {} +)
 GO_MODULE := github.com/eikendev/taskseed
 
 .PHONY: build
