@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/eikendev/taskseed/compare/v0.2.5...v0.3.0) (2026-09-19)
+
+
+### Features
+
+* attest provenance of release artifacts ([77ed593](https://github.com/eikendev/taskseed/commit/77ed593f929bb641aa710591ee593ad28438f64a))
+* build static binaries for amd64 and arm64 ([cad2adb](https://github.com/eikendev/taskseed/commit/cad2adbfeaa1fe13a35531c571a7aa90fbad8e20))
+
 ## [0.2.5](https://github.com/eikendev/taskseed/compare/v0.2.4...v0.2.5) (2026-08-22)
 
 
