@@ -7,10 +7,13 @@ release:
 builds:
   - id: taskseed
     main: ./cmd/taskseed
+    env:
+      - CGO_ENABLED=0
     goos:
       - linux
     goarch:
       - amd64
+      - arm64
 
 checksum:
   algorithm: sha256
