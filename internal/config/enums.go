@@ -1,6 +1,6 @@
 package config
 
-//go:generate go run github.com/dmarkham/enumer@v1.6.1 -type=ScheduleKind -trimprefix=ScheduleKind -transform=snake
+//go:generate go run github.com/dmarkham/enumer@v1.6.4 -type=ScheduleKind -trimprefix=ScheduleKind -transform=snake
 
 // ScheduleKind enumerates the supported recurrence schedule types.
 type ScheduleKind int
