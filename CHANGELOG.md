@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/eikendev/taskseed/compare/v0.3.0...v0.3.1) (2026-10-03)
+
+
+### Build
+
+* **go:** bump github.com/go-playground/validator/v10 ([#23](https://github.com/eikendev/taskseed/issues/23)) ([0bb7bd3](https://github.com/eikendev/taskseed/commit/0bb7bd3e38f59ab3ec6c99166af18eab58ef4a14))
+* require go 1.27 ([#22](https://github.com/eikendev/taskseed/issues/22)) ([bf8ea3c](https://github.com/eikendev/taskseed/commit/bf8ea3c4ca0f309aa68bcb90d5130be6967a0c69))
+
 ## [0.3.0](https://github.com/eikendev/taskseed/compare/v0.2.5...v0.3.0) (2026-09-19)
 
 
