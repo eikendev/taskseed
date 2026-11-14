@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.2](https://github.com/eikendev/taskseed/compare/v0.3.1...v0.3.2) (2026-11-14)
+
+
+### Build
+
+* **actions:** bump zizmorcore/zizmor-action ([#25](https://github.com/eikendev/taskseed/issues/25)) ([3e9d04f](https://github.com/eikendev/taskseed/commit/3e9d04fabb5a28ca8e8ad0be4582a662469823b8))
+* **actions:** bump zizmorcore/zizmor-action ([#27](https://github.com/eikendev/taskseed/issues/27)) ([4cc7a73](https://github.com/eikendev/taskseed/commit/4cc7a73ed1079bdba853a12aa2ef6a42cc6e7060))
+* **actions:** bump zizmorcore/zizmor-action ([#29](https://github.com/eikendev/taskseed/issues/29)) ([8ac052a](https://github.com/eikendev/taskseed/commit/8ac052a870f711a40c2fcd0654d5b014a195e58c))
+* add gohawk to lint tools ([37d5873](https://github.com/eikendev/taskseed/commit/37d58732a7a973cb8ba627ccf6e13dfa6f5e0ec7))
+* **go:** bump the go-dependencies group across 1 directory with 2 updates ([#28](https://github.com/eikendev/taskseed/issues/28)) ([4a0968f](https://github.com/eikendev/taskseed/commit/4a0968f47a3a3c9650fe8179c318b07dd4483faf))
+* pin lint tools in a tools module ([64ff517](https://github.com/eikendev/taskseed/commit/64ff517d7e01413cc8c96ce33abb7fa6fdd5a3ef))
+
 ## [0.3.1](https://github.com/eikendev/taskseed/compare/v0.3.0...v0.3.1) (2026-10-03)
 
 
